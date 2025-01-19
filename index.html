@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujin Shakya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnjs.com/css2?family=Italianno&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Core Variables */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #717975;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #f3f3f3;
+            --accent-light: #ffffff;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-heading: 'Italianno', cursive;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Cormorant Garamond', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.98), rgba(10, 10, 10, 0.95));
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-family: "sans-serif";
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .flourish {
+            color: var(--accent);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 0 0.5rem;
+            opacity: 0.8;
+        }
+
+        .subtitle {
+            font-family: var(--font-display);
+            color: var(--accent);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .new {
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            opacity: 0.5;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            min-width: 200px; 
+            min-height: 200px; 
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .about-content {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .gallery {
+            max-width: 1200px; 
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            gap: 3rem;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 3/2;
+            background: var(--bg-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+      
+        .photo-card:hover img {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+
+  
+        .profile-photo img {
+            filter: none;
+        }
+
+    
+        .photo-card img {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+      
+        .photo-card img {
+            filter: grayscale(100%) contrast(1.1) brightness(0.95);
+        }
+
+        .photo-card:hover img {
+            filter: grayscale(0%) contrast(1) brightness(1);
+        }
+
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem; 
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .photo-meta {
+            font-family: var(--font-display);
+            font-size: 1rem; 
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: var(--text-secondary);
+        }
+        .decorative-divider {
+        max-width: 1000px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+        .divider-line {
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(
+                to right,
+                transparent,
+                var(--accent),
+                transparent
+            );
+            opacity: 0.3;
+        }
+
+        .divider-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            opacity: 0.6;
+            transform: rotate(45deg);
+        }
+
+        .divider-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            opacity: 0.4;
+        }
+
+        @media (max-width: 768px) {
+            .decorative-divider {
+                margin: 3rem auto;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .about-container {
+                flex-direction: row;
+                text-align: left;
+                gap: 3rem;
+            }
+
+            .gallery {
+                padding: 0 2rem;
+                gap: 3rem;
+            }
+
+            .photo-info {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            .photo-card:hover .photo-info {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .photo-card:hover img {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-content {
+                padding: 0;
+            }
+
+            .about-content {
+                padding: 0;
+            }
+
+            .gallery {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">
+                <i class="flourish fas fa-feather-alt"></i>
+                Sujin Shakya
+                <i class="flourish fas fa-feather-alt"></i>
+            </h1>
+            <div class="subtitle">PHOTOGRAPHY PORTFOLIO</div>
+            <i class="new">Please hover cursor over the picture to see the full color version</i>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="profile-photo">
+                <img src="1736787849466.jpeg" alt="Sujin Shakya">
+            </div>
+            <div class="about-content">
+                Welcome to my photography portfolio! I'm Sujin Shakya, a passionate student and photography enthusiast who loves capturing moments through my lens. Most of my work focuses on macro-style photography but you'll also find some stunning telephoto shots of some breathtaking landscapes too. One photograph you will find particularly fascinating is the super moon of 2020.
+            </div>
+        </div>
+        <div class="divider"></div>
+    </section>
+    <div class="decorative-divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <i class="fas fa-camera divider-icon"></i>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+    </div>
+
+    <main class="gallery" id="gallery">
+        <div class="photo-card">
+            <img src="image 1.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/11 | 1/160s | ISO 400</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="Bee Photo.jpg" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/8 | 1/200s | ISO 400</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="Image 4.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/5.6 | 1/250s | ISO 100</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="Image 5.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/5.6 | 1/160s | ISO 400</div>
+            </div>
+        </div>
+        <div class="photo-card">
+            <img src="Image 6 (2).JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/11 | 1/1000s | ISO 3200</div>
+            </div>
+        </div>
+        <div class="photo-card">
+            <img src="Image 7.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/11 | 1/1000s | ISO 3200</div>
+            </div>
+        </div>
+        <div class="photo-card">
+            <img src="Image 8.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/8 | 1/160s | ISO 100</div>
+            </div>
+        </div>
+        <div class="photo-card">
+            <img src="Image 9.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/8 | 1/400s | ISO 400</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="Image 10.JPG" alt="Photo 1">
+            <div class="photo-info">
+                <div class="photo-meta">Canon EOS Rebel T5 | f/5.6 | 1/60s | ISO 800</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Sujin Shakya Photography | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
